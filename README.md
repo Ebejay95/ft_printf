@@ -1,40 +1,98 @@
 # ft_printf
 
-**Custom implementation of the `printf` function in C.**
+**Because `ft_putnbr()` and `ft_putstr()` aren’t enough!**
 
-This project is a replica of the `printf` function from the C standard library that provides a deep understanding of formatted output, variadic functions and memory management.
+## Summary
 
-## structure
+The **ft_printf** project focuses on replicating the behavior of the standard C library function `printf()`. Through this task, you'll learn about variadic functions, memory management, and formatting outputs in C. The end goal is to create a custom `ft_printf()` function, integrate it into your `libft`, and elevate your coding skills.
 
-### src/
-
-The `src` folder contains the central source code files that implement the functionality of `ft_printf`. Each file is responsible for parsing and handling different format specifications:
-
-- **ft_printf.c**: The main implementation of the `ft_printf` function. This file controls the formatting process and ensures that the different types are handled correctly.
-- **ft_parser.c**: This file contains the logic to parse the format string and extract the appropriate flags, widths and precisions.
-- **ft_handler_char.c**: Handles the output of characters (`%c`) and strings (`%s`).
-- **ft_handler_int.c**: Handles the processing of integer values (`%d`, `%i`).
-- **ft_handler_unsigned.c**: Implements the handling of unsigned integers (`%u`) as well as the conversion to hexadecimal numbers (`%x`, `%X`).
-- **ft_utils.c**: Helper functions that are needed in several parts of the implementation, such as `ft_strlen`, `ft_itoa`, and similar.
-
-### ft_printf.h
-
-The header file contains the function prototypes and necessary macros to link the implementation in the different files.
-
-### Makefile
-
-The Makefile automates the build process, compiles the source code files and creates the static library `libftprintf.a`, which can be included in other projects.
+---
 
 ## Features
 
-- **Format specifications**: Supports basic format specifications such as `%c`, `%s`, `%d`, `%i`, `%u`, `%x`, `%X`, and `%%`.
-- **Flags and precision**: Handles flags such as `-`, `0`, `#`, ` `, `+` and supports width and precision specifications.
-- Memory management**: Implements optimized memory management for efficient output.
+- **Supported Conversions**:
+  - `%c`: Print a single character.
+  - `%s`: Print a string.
+  - `%p`: Print a pointer in hexadecimal format.
+  - `%d`, `%i`: Print integers in base 10.
+  - `%u`: Print unsigned integers in base 10.
+  - `%x`, `%X`: Print integers in hexadecimal (lowercase/uppercase).
+  - `%%`: Print a percent sign.
+  
+- **Bonus Features** (Optional):
+  - Manage flags like `-0.` and minimum field width for all conversions.
+  - Implement flags `# +` (including space).
 
-## Usage
+- **Compatibility**:
+  - Works seamlessly with `libft` projects.
+  - Passes evaluation by Deepthought and peer-review systems.
 
-To compile the project, use the following command:
+---
 
-```
+## Project Structure
+
+### Source Code
+
+- **`src/`**: Contains the main implementation and modular files:
+  - **`ft_printf.c`**: The main function implementing `ft_printf`.
+  - **`ft_parser.c`**: Parses format strings and extracts flags, widths, and precisions.
+  - **`ft_handler_char.c`**: Handles `%c` and `%s` conversions.
+  - **`ft_handler_int.c`**: Manages `%d`, `%i` conversions.
+  - **`ft_handler_unsigned.c`**: Handles `%u`, `%x`, `%X`.
+  - **`ft_utils.c`**: Helper functions like `ft_strlen`, `ft_itoa`, etc.
+
+- **`ft_printf.h`**: Contains function prototypes, macros, and shared definitions.
+
+### Build System
+
+- **Makefile**: Automates building and testing:
+  - Targets: `NAME`, `all`, `clean`, `fclean`, `re`, and `bonus`.
+  - Outputs `libftprintf.a`, a static library ready for integration.
+
+---
+
+## Installation and Usage
+
+1. Clone the repository:
+git clone <repository_url> cd ft_printf
+
+markdown
+Code kopieren
+
+2. Build the library:
 make
+
+arduino
+Code kopieren
+
+3. Include libftprintf.a in your project and link it during compilation:
 ```
+#include "ft_printf.h"
+
+int main(void)
+{
+    ft_printf("Hello, World! %d\n", 42);
+    return 0;
+}
+```
+
+gcc main.c libftprintf.a -o my_program
+Requirements and Rules
+Language: C (Adheres to 42's Norm standards).
+Mandatory External Functions: malloc, free, write, va_start, va_arg, va_copy, va_end.
+Memory Management: No leaks allowed.
+Bonus: Bonus features are assessed only after passing the mandatory part perfectly.
+Submission: Submit via the assigned Git repository. Ensure all files are correctly named and structured.
+Key Learning Outcomes
+Deep dive into variadic functions.
+Mastery of formatting and parsing techniques.
+A solid understanding of memory allocation and management in C.
+Building a reusable and robust library for future projects.
+Once completed, your ft_printf() becomes a valuable addition to your libft arsenal!
+
+ft_printf – because building it yourself is way cooler than using the default. 😉
+
+
+
+
+
